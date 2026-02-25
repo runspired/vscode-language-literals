@@ -3,10 +3,11 @@
   "publisher": "sissel",
   "displayName": "Language Literals",
   "description": "Syntax highlighting support for tagged literals",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "logo.png",
   "author": "Νίκος Σαβίδης <n.savvidis@gmx.com>",
   "license": "MIT",
+  "main": "./extension.js",
   "keywords": [
     "javascript",
     "typescript",
@@ -27,10 +28,31 @@
   "categories": [
     "Programming Languages"
   ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
   "scripts": {
     "build": "vsce package --no-dependencies"
   },
   "contributes": {
+    "configuration": {
+      "title": "Language Literals",
+      "properties": {
+        "languageLiterals.region.background.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight the background of tagged template literal regions to help differentiate them from surrounding code."
+        },
+        "languageLiterals.region.background.color": {
+          "type": "string",
+          "default": "rgba(128, 128, 128, 0.08)",
+          "description": "Background color applied to tagged template literal regions. Accepts any CSS color value (e.g. \"rgba(0, 0, 0, 0.05)\" or \"#00000010\")."
+        }
+      }
+    },
     "grammars": [
       {
         "injectTo": [
