@@ -81,8 +81,13 @@ function createDecorationType() {
   const { enabled, color } = getConfig();
   if (!enabled) return;
 
+  const isWholeLine = vscode.workspace
+    .getConfiguration('languageLiterals')
+    .get('region.background.wholeLine', true);
+
   decorationType = vscode.window.createTextEditorDecorationType({
     backgroundColor: color,
+    isWholeLine,
     rangeBehavior: vscode.DecorationRangeBehavior.ClosedClosed,
   });
 }
